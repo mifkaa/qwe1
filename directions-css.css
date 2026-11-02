@@ -1,0 +1,628 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fff;
+    --mainGrey: #e6e2d9;
+    --mainOrange: #ffc965;
+    --mainGreen: #b7c69f;
+    --mainBlack: #323637;
+}
+
+.close-modal {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+html {
+    font-size: 20px;
+}
+
+@font-face {
+    font-family: 'Involve-Medium';
+    src: url('style/font/Involve-Medium.otf');
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Involve-Medium', sans-serif;
+    background-color: #ffffff;
+    color: var(--mainBlack);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Анимации страницы */
+@keyframes fadeIn {
+    0% {
+        transform: translateY(5px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.page-transition-out {
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+    line-height: 1;
+}
+
+h2 {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #888888;
+    margin-bottom: 1rem;
+}
+
+.subhead {
+    font-size: 0.9rem;
+    color: #666666;
+    margin-bottom: 1.5rem;
+    border-left: 2px solid #e0e0e0;
+    padding-left: 1rem;
+    margin-top: 0.75rem;
+}
+
+/* ========== LAYOUT ========== */
+.back-bar {
+    position: sticky;
+    display: flex;
+    align-items: center;
+    top: 0;
+    /* border-bottom: solid 1px var(--mainGrey); */
+    padding: 0.75rem 1.5rem;
+    height: 72px;
+    margin-bottom: 20px;
+
+    transition: all 0.3s;
+    transform: translateY(-90px);
+    z-index: 99;
+    background-color: var(--white);
+}
+
+.back-bar.open {
+    transform: translateY(0);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: #444444;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+    font-weight: 450;
+}
+
+.back-button:hover {
+    color: #000000;
+}
+
+.grid {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    max-width: 1920px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+
+    gap: 48px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+
+/* ========== ВИДЕО/ФОТО БЛОК ========== */
+.media-block {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+    width: auto;
+    height: 460px;
+    flex: auto;
+    background-color: var(--mainGrey);
+}
+
+
+.media-block img {
+    height: 100%;
+    width: 100%;
+    object-position: 50% 50%;
+    /* object-position: 50% 40%; */
+    object-fit: cover;
+}
+
+/* Плейсхолдер если нет видео */
+.media-placeholder {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e6e2d9 0%, #ccc 100%);
+    color: #666;
+    font-size: 0.875rem;
+}
+
+.container {
+    text-align: justify;
+    flex: 3;
+}
+
+/* ========== РАСПИСАНИЕ ========== */
+.schedule-block {
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #333333;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-day {
+    font-weight: 500;
+    min-width: 100px;
+    color: #111111;
+}
+
+.schedule-time {
+    color: #666666;
+}
+
+.teacher-link {
+    color: var(--mainOrange);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212, 165, 0, 0.3);
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.teacher-link:hover {
+    color: #b89000;
+    border-bottom-color: rgba(184, 144, 0, 0.5);
+}
+
+/* ========== ГАЛЕРЕЯ ВИДЕО ========== */
+.gallery-title {
+    margin-top: 2rem;
+}
+
+/* Галерея */
+.video-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin: 1rem 0 2rem;
+}
+
+/* Карточка видео */
+.video-card {
+    cursor: pointer;
+}
+
+/* Контейнер для превью — просто фон, никакого принудительного размера */
+.video-preview {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--mainGrey);
+}
+
+/* Видео в превью — полная свобода пропорций */
+
+
+.video-header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 0;
+    top: 0;
+    /* padding: 0px 15px; */
+    pointer-events: none;
+
+
+    padding-left: 25px;
+    height: 60px;
+    background-color: #00000000;
+}
+
+.teacher-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--white);
+}
+
+
+.video-preview video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video-preview .hover {
+    transition: all 0.2s;
+    position: absolute;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+    color: var(--white);
+    opacity: 0;
+    padding-bottom: 10px;
+    line-height: 1;
+}
+
+.video-preview .play svg {
+    fill: var(--white);
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 24px;
+    pointer-events: none;
+}
+
+.video-preview .hover:hover {
+    opacity: 1;
+}
+
+/* Модальное окно */
+.video-modal {
+    transition: all 0.3s;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    will-change: auto;
+}
+
+.video-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Контент модального окна — подстраивается под видео */
+.video-modal-content {
+    position: relative;
+    width: auto;
+    max-width: 100vw;
+    max-height: 100vh;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Видео в модалке — не больше 80% экрана, пропорции идеальные */
+.video-modal-content video {
+    max-width: 90vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+/* Кнопка закрытия */
+.close-modal {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: white;
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.close-modal-t {
+    display: none;
+}
+
+.close-modal:hover {
+    opacity: 0.7;
+}
+
+/* ========== ТЕКСТОВЫЕ СТИЛИ ========== */
+.text-block {
+    margin-bottom: 2rem;
+}
+
+.text-block p {
+    font-size: 0.9375rem;
+    color: #333333;
+    margin-bottom: 1rem;
+}
+
+.quote {
+    font-size: 0.875rem;
+    font-style: normal;
+    color: #888888;
+    padding: 1rem 0;
+    margin: 1.5rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.separator {
+    width: 32px;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 1.5rem 0;
+}
+
+/* Добавить в конец файла directions-css.css */
+
+/* ========== ДВЕ КНОПКИ НАВИГАЦИИ ========== */
+.back-bar {
+    justify-content: space-between;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: #444444;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+    font-weight: 450;
+}
+
+.nav-button:hover {
+    color: #000000;
+}
+
+.nav-button-back::before {
+    content: '←';
+    margin-right: 0.25rem;
+}
+
+.nav-button-forward::after {
+    content: '→';
+    margin-left: 0.25rem;
+}
+
+/* На мобильных устройствах */
+
+
+@media (max-width: 1279px) {
+    html {
+        font-size: 18px;
+    }
+
+    .media-block {
+
+        height: 330px;
+
+    }
+
+}
+
+@media (max-width: 767px) {
+    html {
+        font-size: 17px;
+    }
+
+    .box {
+        padding-left: 20px;
+        padding-right: 20px;
+        gap: 10px;
+    }
+
+    .media-block {
+        top: 0;
+        margin: 0;
+        padding: 0;
+        height: 280px;
+        margin-bottom: 24px;
+        border-radius: 20px;
+        margin: 20px;
+        margin-bottom: 24px;
+    }
+
+    .media-block img {
+        /* object-position: 50% 20%; */
+    }
+
+    .container {
+        padding: 0 1.25rem 3rem;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .back-bar {
+        padding: 0.5rem 1rem;
+        margin: 0px;
+    }
+
+    .tabs {
+        margin: 1.5rem 0 1rem;
+    }
+
+    .tab-btn {
+        padding: 0.3rem 0.3rem;
+        font-size: 0.85rem;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+    }
+
+
+    .schedule-item {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .schedule-day {
+        min-width: auto;
+    }
+
+    .video-gallery {}
+
+    .close-modal {
+        display: none;
+    }
+
+
+    .video-modal {
+        align-items: baseline;
+        background-color: #000;
+    }
+
+    .close-modal-t {
+        display: flex;
+        position: absolute;
+        right: 0;
+        /* color: var(--mainBlack); */
+        color: var(--white);
+        font-size: 26px;
+        height: 36px;
+        width: 36px;
+        margin-right: 2px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .close-modal-m:hover {
+        opacity: 0.7;
+    }
+
+    .video-header {
+        pointer-events: auto;
+        width: 100vw;
+
+        padding-left: 10px;
+        height: 60px;
+        background-color: #00000000;
+    }
+
+    .teacher-name {
+        /* border-left: 1px solid var(--mainBlack); */
+        /* border-left: 1px solid var(--white); */
+        /* padding-left: 10px; */
+        /* color: var(--white); */
+        /* font-size: 1.1rem; */
+        margin-left: 10px;
+    }
+
+
+    .video-modal {}
+
+    .video-modal-content {
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+
+    /* Видео в модалке — не больше 80% экрана, пропорции идеальные */
+    .video-modal-content video {
+        max-width: 140vw;
+        max-height: 100vh;
+    }
+
+}
+
+@media (max-width: 479px) {
+    html {
+        font-size: 16px;
+    }
+
+
+    .media-block {
+        height: 280px;
+        border-radius: 0 0 30px 30px;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    .box {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+
+}

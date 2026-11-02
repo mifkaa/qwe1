@@ -1,0 +1,191 @@
+/* @media(prefers-color-scheme: dark){
+
+} */
+
+
+/* * {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+} */
+ .nowrap {
+    white-space: nowrap;
+}
+
+
+ img, svg, picture, iframe {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    /* pointer-events: auto;  */
+}
+
+/* Убираем перетаскивание и ссылку картинки */
+img{
+  pointer-events: none;
+}
+img:hover+a{
+  display: none;
+}
+a{
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  -webkit-user-drag: none;
+  color: inherit; /* Наследует цвет родителя (опционально) */
+}
+
+/* Убираем синий цвет у посещённых ссылок */
+a:visited {
+  /* color: inherit; Или задайте свой цвет */
+}
+
+/* Убираем выделение при клике/активации */
+a:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Убираем выделение при фокусе (клавиатура) */
+a:focus {
+  outline: none;
+}
+/* Убираем выделение при наведении */
+a:hover {
+  text-decoration: none; /* Если нужно убрать подчёркивание при ховере */
+}
+
+/* Возобновляем взаимодействие с иконками */
+.socials img{
+  pointer-events: auto;
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow-x: hidden;
+
+  /*  */
+  /* margin-left: calc(50vw - 195px);
+  margin-right: auto; */
+  /*  */
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+
+
+/* Упрощаем работу с изображениями */
+/* img {
+  max-width: 100%;
+  height: auto;
+} */
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+blockquote, q {quotes: none;}
+
+
+
+
+
+
+
+/* ============================================
+   СБРОС СТИЛЕЙ ДЛЯ СЕМАНТИЧЕСКИХ ТЕГОВ (SEO/A11Y)
+   Добавьте этот блок в конец reset.css
+   ============================================ */
+
+/* 1. Сброс для кнопок — убираем всё браузерное */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Возвращаем рамку фокуса для клавиатуры (важно для доступности) */
+button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+/* 2. Сброс для заголовков H1-H6 */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+/* 3. Сброс для семантических блоков */
+header, main, footer, section, article, aside, nav {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* 4. Сброс для списков внутри семантических тегов (если нужно) */
+nav ul, nav ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 5. Сброс для ссылок внутри навигации (оставляем кастомные стили, но убираем подчёркивание) */
+nav a {
+    text-decoration: none;
+}
